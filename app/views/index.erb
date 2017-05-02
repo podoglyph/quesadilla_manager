@@ -1,0 +1,8 @@
+<div>
+  <h1>The Magic Quesadilla House</h1>
+
+  <% quesadillas.each do |q| %>
+    <h3><a href="/quesadillas/<%= q.id %>"><%= q.name %></a></h3>
+      <p><%= q.description %></p>
+  <% end %>
+</div>
