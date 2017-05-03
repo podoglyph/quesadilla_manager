@@ -16,7 +16,7 @@ class Quesadilla
     database.results_as_hash = true
     database
   end
-  
+
   def save
     @database.execute("INSERT INTO quesadillas (name, description) VALUES (?, ?);", @name, @description)
   end
@@ -31,6 +31,22 @@ class Quesadilla
   def self.find(id)
     quesadilla = database.execute("SELECT * FROM quesadillas WHERE id=?", id).first
     Quesadilla.new(quesadilla)
+  end
+
+  def self.update(id, quesadilla_params)
+    database.execute("UPDATE quesadillas
+                      SET name = ?,
+                      description = ?
+                      WHERE id=?;",
+                      quesadilla_params[:name],
+                      quesadilla_params[:description],
+                      id)
+    Quesadilla.find(id)
+  end
+
+  def self.delete(id)
+    database.execute("DELETE FROM quesadillas
+                      WHERE id = ?;", id)
   end
 
 end

@@ -1,0 +1,7 @@
+<form action="/quesadillas/<%= @quesadilla.id %>" method="post">
+  <h3>Edit</h3>
+  <input type="hidden" name="_method" value="PUT" />
+  <input type="text" name="quesadilla[name]" value="<%= quesadilla.name %>" /><br/>
+  <textarea name="quesadilla[description]"><%= quesadilla.description %></textarea></br>
+  <input type="submit" />
+</form>

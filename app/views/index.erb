@@ -4,5 +4,10 @@
   <% quesadillas.each do |q| %>
     <h3><a href="/quesadillas/<%= q.id %>"><%= q.name %></a></h3>
       <p><%= q.description %></p>
+      <a href="/quesadillas/<%= q.id %>/edit">Edit</a>
+      <form action="/quesadillas/<%= q.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="delete"/>
+      </form>
   <% end %>
 </div>
